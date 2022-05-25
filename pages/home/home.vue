@@ -31,7 +31,7 @@
         <view class="floorContent">
           <!-- 左侧大图 -->
           <view class="floorContentLeft">
-            <image :src="floor.product_list[0].image_src" :style="{width:floor.product_list[0].image_width +'rpx'}" mode="widthFix"></image>
+            <image :src="floor.product_list[0].image_src" :style="{width:floor.product_list[0].image_width +'rpx'}" mode="widthFix" @click="toGoodsList(floor.product_list[0])"></image>
           </view>
           <!-- 右侧四张小图 -->
           <view class="floorContentRight">
@@ -117,6 +117,13 @@
           })
         }
       },
+      //点击楼层大图去goodsList
+      toGoodsList(query){
+        const path = '/subpkg/goods_list/goods_list?'+query.navigator_url.split('?')[1]
+        uni.navigateTo({
+          url:path
+        })
+      }
     }
   }
 </script>
