@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <my-search></my-search>
     <view class="scroll-view-container">
       <!-- 左侧滚动区域start -->
       <scroll-view class="scroll-view-left" scroll-y :style="{height:wh}">
@@ -41,7 +43,8 @@
     },
     onLoad() {
       //获取屏幕可用高度（总高度减去上下tabbar）
-      this.wh = uni.getSystemInfoSync().windowHeight + 'px'
+      //把搜索区域的高度（50）减去
+      this.wh = uni.getSystemInfoSync().windowHeight-50 + 'px'
       //发起请求获取分类列表
       this.getCateList()
     },

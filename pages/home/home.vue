@@ -1,9 +1,13 @@
 <template>
   <view>
+    <!-- 搜索 -->
+    <div class="home-search-box">
+      <my-search></my-search>
+    </div>
     <!-- 轮播图 start-->
     <swiper :indicator-dots="true" :circular="true" indicator-color="white" indicator-active-color="red"
       :autoplay="true" :interval="3000" :duration="1000">
-      <swiper-item v-for="item in swiperList" :key="item.goods_id">
+      <swiper-item v-for="item in swiperList" :key="item.goods_id" :scroll-top="scrollTop">
         <navigator :url="'/subpkg/goods_detail/goods_detail?goods_id='+item.goods_id">
           <image :src="item.image_src"></image>
         </navigator>
@@ -118,6 +122,11 @@
 </script>
 
 <style lang="scss">
+  .home-search-box{
+    position: sticky;
+    top: 0;
+    z-index: 666;
+  }
   swiper {
     height: 330rpx;
     swiper-item,
