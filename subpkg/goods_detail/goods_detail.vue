@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  import {mapMutations,mapGetters} from 'vuex'
   export default {
     data() {
       return {
@@ -53,7 +54,7 @@
         		}, {
         			icon: 'cart',
         			text: '购物车',
-        			info: 2
+        			info: 0
         		}],
         	    buttonGroup: [{
         	      text: '加入购物车',
@@ -70,8 +71,16 @@
     },
     onLoad(options){
       this.getGoodsInfo(options.goods_id)
+      //刚开局就展示购物车数量
+      this.options[2].info=this.total
+    },
+    computed:{
+      //计算商品总数
+       ...mapGetters('cart',['total'])
     },
     methods:{
+      //点击添加购物车按钮相关
+      ...mapMutations('cart',['addToCart']),
       //获取商品详情
       async getGoodsInfo(id){
         const result = await uni.$http.get('/api/public/v1/goods/detail?goods_id='+id)
@@ -103,9 +112,22 @@
       },
       //击底部商品导航，右侧按钮
       buttonClick(e){
-        //console.log('右',e);
+        if(e.content.text==='加入购物车'){
+          //要传递的数据格式
+          const goods = {
+                   goods_id: this.goods_info.goods_id,       // 商品的Id
+                   goods_name: this.goods_info.goods_name,   // 商品的名称
+                   goods_price: this.goods_info.goods_price, // 商品的价格
+                   goods_count: 1,                           // 商品的数量
+                   goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
+                   goods_state: true                         // 商品的勾选状态
+                }
+                //通过 this 调用映射过来的 addToCart 方法，把商品信息对象存储到购物车中
+          this.addToCart(goods)
+          this.options[2].info=this.total
+        }
       }
-    }
+    },
   }
 </script>
 
