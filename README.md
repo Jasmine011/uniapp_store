@@ -20,12 +20,10 @@ git clone https://github.com/Jasmine011/admin-back.git
 
 
 
-
-## 
-
 分类
 
 ![image-20220705091358383](https://user-images.githubusercontent.com/96428529/177231390-42e51677-c3f6-4e10-92c5-5798eb99a527.png)
+
 
 
 购物车
@@ -33,12 +31,15 @@ git clone https://github.com/Jasmine011/admin-back.git
 ![image-20220705091435546](https://user-images.githubusercontent.com/96428529/177231403-9879de61-33ae-40f6-a529-7f81a7bfa3c7.png)
 
 
+
 个人中心
 ![image-20220705091515199](https://user-images.githubusercontent.com/96428529/177231410-5f4cf816-fd6e-4a75-8ae2-e7f87cd75b9c.png)
 
 
+
 商品列表
 ![image-20220705091606063](https://user-images.githubusercontent.com/96428529/177231414-24e91321-cab0-4edc-a200-8fe3209a5b98.png)
+
 
 
 搜索页面
